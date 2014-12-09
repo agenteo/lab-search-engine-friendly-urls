@@ -36,7 +36,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'byebug'
+group :development do
+  gem 'benchmark-ips'
+end
 group :test do
+  gem 'byebug'
   gem 'rspec-rails'
 end

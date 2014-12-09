@@ -29,10 +29,10 @@ describe PsycoticLookup do
         expect(lookup.ids).to match_array([3,8])
       end
 
-      context "with two segments the second starting with a common word" do
+      context "with two segments the second starting with a facet" do
         let(:slug) { 'living-rooms-cement-fireplace' }
 
-        it "should find the segments" do
+        it "should find the two segments and ignore fireplace" do
           lookup = PsycoticLookup.new(slug)
           expect(lookup.ids).to match_array([2,10])
         end
