@@ -6,6 +6,11 @@ class PsycoticController < ApplicationController
     #   redirect_to "/digs/#{redirect.destination}"
     # end
     # do your search with lookup.ids
-    render text: lookup.ids
+    terms = []
+    dictionary = Dictionary.new
+    lookup.ids.each do |id|
+      terms << dictionary.term(id)
+    end
+    flash[:notice] = "You searched for : #{terms.join(' ')}"
   end
 end
