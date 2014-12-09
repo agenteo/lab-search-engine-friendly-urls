@@ -9,6 +9,8 @@ class PsycoticLookup
     "home-exteriors" => 7
   }
   BATHROOM_FACETS_DICTIONARY = { "frameless-showerdoor" => 8 }
+  LIVING_ROOMS_FACETS_DICTIONARY = { "stone-fireplace" => 9,
+                                     "cement-fireplace" => 10 }
 
   def initialize(slug)
     @slug = slug
@@ -17,11 +19,8 @@ class PsycoticLookup
   def ids
     @ids = []
     psycotic_dictionary.each do |term, id|
-require 'byebug'
-byebug
-
-      if @slug.match(/^-?#{term}-?$/)
-        @slug.gsub(/^-?#{term}-?$/, '')
+      if @slug.match(/-?#{term}-?/)
+        @slug.gsub(/-?#{term}-?/, '')
         @ids << id
       end
     end
@@ -31,7 +30,7 @@ byebug
   private
 
     def psycotic_dictionary
-      TAXONOMIES_DICTIONARY.merge( BATHROOM_FACETS_DICTIONARY )
+      TAXONOMIES_DICTIONARY.merge( BATHROOM_FACETS_DICTIONARY ).merge( LIVING_ROOMS_FACETS_DICTIONARY )
     end
 
 end

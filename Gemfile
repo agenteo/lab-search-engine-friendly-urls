@@ -37,3 +37,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'byebug'
+group :test do
+  gem 'rspec-rails'
+end
